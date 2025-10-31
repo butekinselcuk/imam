@@ -1,0 +1,31 @@
+{
+  "name": "imam",
+  "version": "1.0.0",
+  "description": "Bu platform, dini/sosyal/psikolojik danışmanlık hizmetlerini veren uzmanlarla kullanıcıları buluşturan bir sistemdir. 3 farklı kullanıcı statüsü ile çalışır: **Admin**, **Mod (Sağlayıcı)**, **User (Kullanıcı)**. Web tabanlı başlar, ardından Android ve iOS mobil uygulamaları geliştirilecektir.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "start": "node server/server.js",
+    "dev": "nodemon server/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "seed": "node prisma/seed.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@prisma/client": "^6.11.1",
+    "bcrypt": "^6.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^17.0.1",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "multer": "^2.0.1",
+    "prisma": "^6.11.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-helmet-async": "^2.0.5"
+  }
+}
