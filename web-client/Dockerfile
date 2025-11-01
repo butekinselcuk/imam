@@ -1,20 +1,13 @@
-# Frontend için Dockerfile
-FROM node:20-alpine
-
+# Frontend için multi-stage Dockerfile (Build + Nginx serve)
+FROM node:20-alpine AS build
 WORKDIR /app
-
-# Package.json ve package-lock.json dosyalarını kopyala
 COPY package*.json ./
-
-# Bağımlılıkları yükle
 RUN npm ci
-
-# Kaynak kodunu kopyala
 COPY . .
-
-# Uygulamayı build et
 RUN npm run build
 
-EXPOSE 3000
-
-CMD ["npm", "start"]
+FROM nginx:alpine
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+COPY --from=build /app/build /usr/share/nginx/html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
